@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Ghost
+comment1.params=h
+comment1.target=Ghost(greenfoot.Actor)
+comment2.params=h\ scale
+comment2.target=Ghost(greenfoot.Actor,\ double)
+comment3.params=i
+comment3.target=Ghost(greenfoot.GreenfootImage)
+numComments=4
