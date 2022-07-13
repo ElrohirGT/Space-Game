@@ -20,7 +20,44 @@ Se tendrán 5 tipos de naves alienígenas:
 * **Pescado**: El pescado aumenta la cantidad de enemigos que pueden ser aparecer. En el modo de dos jugadores este aumenta la cantidad de dinero que recibe por cada nave asesinada así como lo que recibe por tiempo.
 * **Steel Ball**: Esta pelota de hierro protege a las naves alienígenas enemigas con su escudo que se recarga cada cierto tiempo.
 
+## Entrevistas
+**Entrevistada:** Nicolle Gordillo
+
+* **¿Alguna vez ha jugado juegos de shooters en tercera persona o de supervivencia por rondas?:** No
+    * **¿Por qué no?** No juego muchos juegos.
+* **¿Cree que jugaría el concepto del juego presentado?** Sí me gustaría.
+* **¿Considera que puede mejorarle algo?** No tengo nada que agregar pues me gusta como esta.
+
+**Entrevistado:** José Galán
+
+* **¿Alguna vez ha jugado juegos de shooters en tercera persona o de supervivencia por rondas?:** Sí.
+    * **¿Cuáles?** Pew Pew Live, Call of Duty Zombies, Fortnite
+* **¿Cree que jugaría el concepto del juego presentado?** Si es gratis sí.
+* **¿Considera que puede mejorarle algo?** Talvez pagaría por el juego si tuviera modo online para jugar con mis amigos.
+
+**Entrevistado:** Carlos Valladares
+
+* **¿Alguna vez ha jugado juegos de shooters en tercera persona o de supervivencia por rondas?:** Sí
+    * **¿Cuáles?** Call of Duty Zombies
+    * **¿Por qué no?**
+* **¿Cree que jugaría el concepto del juego presentado?** Si, me parece una idea bastante entretenida.
+* **¿Considera que puede mejorarle algo?** Mejorar no, pero se podrían implementar tipo asteroides.
+
+## Mapa de Empatía
+|¿Qué Piensa?|¿Qué ve?|
+|---|---|
+|La mayoría de los entrevistados han tenido alguna experiencia jugando en shooters en tercera persona o juegos de supervivencia por rondas, por lo que posiblemente tienen preconcepciones sobre el género.|A la gran mayoría les gustó la forma en la que se mira.|
+|¿Qué oye?|¿Qué dice?|
+|Escuchan posiblemente de streamers o de influencers sobre juegos parecidos y lo que es tendencia actualmente.|Dicen que estarían dispuestos a probarlos y se encuentran interesados en juegos de este tipo, aunque no pagarían por él.|
+
 ## Arte conceptual
+**Menú Principal**
+
+![Menú Principal](imgs/Main%20Menu.png)
+
+**Inicio Primer Nivel**
+![First Level Start](imgs/SinglePlayerStart.png)
+
 **Nave Espacial**
 
 ![Nave Espacial](imgs/rocket.png)
