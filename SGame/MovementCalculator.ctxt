@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=MovementCalculator
+comment1.params=angleInDeg\ magnitud
+comment1.target=Vector\ calculateDelta(double,\ double)
+comment2.params=body
+comment2.target=Vector\ getPositionFromActor(greenfoot.Actor)
+numComments=3

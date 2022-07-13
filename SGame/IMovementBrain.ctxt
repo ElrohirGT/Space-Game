@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=IMovementBrain
+comment1.params=
+comment1.target=boolean\ shouldMove()
+comment2.params=body
+comment2.target=void\ move(greenfoot.Actor)
+numComments=3

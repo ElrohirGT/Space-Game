@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Vector
+comment0.text=\n\ Write\ a\ description\ of\ class\ Vector\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Vector()
+comment2.params=x\ y
+comment2.target=Vector(double,\ double)
+comment2.text=\n\ Constructor\ for\ objects\ of\ class\ Vector\n
+comment3.params=
+comment3.target=double\ getX()
+comment4.params=
+comment4.target=double\ getY()
+comment5.params=newX
+comment5.target=void\ setX(double)
+comment6.params=newY
+comment6.target=void\ setY(double)
+comment7.params=other
+comment7.target=Vector\ plus(Vector)
+numComments=8

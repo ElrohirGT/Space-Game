@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=PlayerMovementBrain
+comment1.params=
+comment1.target=PlayerMovementBrain()
+comment2.params=
+comment2.target=boolean\ shouldMove()
+comment3.params=
+comment3.target=PlayerAction[]\ getKeyboardInput()
+comment4.params=body
+comment4.target=void\ move(greenfoot.Actor)
+numComments=5
