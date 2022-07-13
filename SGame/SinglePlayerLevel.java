@@ -14,10 +14,11 @@ public class SinglePlayerLevel extends World
      * Constructor for objects of class SinglePlayerLevel.
      * 
      */
-    public SinglePlayerLevel()
+    public SinglePlayerLevel(Ship playerShip)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WORLD_WIDTH, WORLD_HEIGHT, 1);
-        addObject(new Ship(), WORLD_WIDTH/2,WORLD_HEIGHT/2);
+        addObject(playerShip, WORLD_WIDTH/2,WORLD_HEIGHT/2);
+        setPaintOrder(Ship.class, BasicBullet.class);
     }
 }

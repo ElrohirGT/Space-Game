@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=BasicBulletFactory
+comment1.params=bulletConfig
+comment1.target=BasicBulletFactory(BulletConfiguration)
+comment2.params=rotation
+comment2.target=greenfoot.Actor\ createNew(int)
+numComments=3

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=IGunBrain
+comment1.params=
+comment1.target=boolean\ shouldFire()
+comment2.params=owner\ rotation
+comment2.target=void\ fire(greenfoot.Actor,\ int)
+numComments=3

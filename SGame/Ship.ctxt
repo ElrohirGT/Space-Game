@@ -1,9 +1,12 @@
 #BlueJ class context
 comment0.target=Ship
 comment0.text=\n\ Write\ a\ description\ of\ class\ Ship\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=
-comment1.target=Ship()
+comment1.params=configuration
+comment1.target=Ship(ShipConfiguration)
 comment2.params=
 comment2.target=void\ act()
 comment2.text=\n\ Act\ -\ do\ whatever\ the\ Ship\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=3
+comment3.params=
+comment3.target=void\ fire()
+comment3.text=\n\ Test\ method\ for\ firing\ a\ shot.\n
+numComments=4

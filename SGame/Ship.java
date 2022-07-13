@@ -8,11 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ship extends Actor
 {
-    private ShipConfiguration _configuration = new ShipConfiguration();
-    private IMovementBrain _movementBrain = new PlayerMovementBrain();
+    private ShipConfiguration _configuration;
+    private IMovementBrain _movementBrain;
+    private IGunBrain _gunBrain;
 
-    public Ship()
-    {   
+    public Ship(ShipConfiguration configuration)
+    {
+        _configuration = configuration;
+        _movementBrain = new PlayerMovementBrain(configuration.getMovementConfiguration());
+        _gunBrain = configuration.getShipGun();
+        HelpMethods.scaleToWidth(this, 64);
         turn(-90);//This sets the ship facing up
     }
     
@@ -26,5 +31,17 @@ public class Ship extends Actor
         {
             _movementBrain.move(this);
         }
+        if (_gunBrain.shouldFire())
+        {
+            _gunBrain.fire(this, getRotation());
+        }
+    }
+
+    /**
+     * Test method for firing a shot.
+     */
+    public void fire()
+    {
+        _gunBrain.fire(this, getRotation());
     }
 }

@@ -1,4 +1,10 @@
 #BlueJ class context
 comment0.target=ShipConfiguration
 comment0.text=\n\ Write\ a\ description\ of\ class\ ShipConfiguration\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-numComments=1
+comment1.params=moveConfig\ shipGun
+comment1.target=ShipConfiguration(MovementConfiguration,\ IGunBrain)
+comment2.params=
+comment2.target=IGunBrain\ getShipGun()
+comment3.params=
+comment3.target=MovementConfiguration\ getMovementConfiguration()
+numComments=4

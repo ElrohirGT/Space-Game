@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=GunConfiguration
+comment0.text=\n\ Write\ a\ description\ of\ class\ GunConfiguration\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=bulletFactory\ reloadMs
+comment1.target=GunConfiguration(IBulletFactory,\ int)
+comment2.params=
+comment2.target=int\ getReloadTime()
+comment3.params=
+comment3.target=IBulletFactory\ getBulletFactory()
+numComments=4

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=PlayerShipGun
+comment0.text=\n\ Write\ a\ description\ of\ class\ PlayerShipGun\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=configuration
+comment1.target=PlayerShipGun(GunConfiguration)
+comment2.params=
+comment2.target=boolean\ shouldFire()
+comment3.params=owner\ rotation
+comment3.target=void\ fire(greenfoot.Actor,\ int)
+numComments=4

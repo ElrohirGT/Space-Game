@@ -2,17 +2,15 @@ import greenfoot.*;
 import java.util.HashMap;
 
 public class PlayerMovementBrain implements IMovementBrain {
-    private final float PLAYER_MOVEMENT_SPEED = 5;
-    private final float PLAYER_TURN_SPEED = 5;
-
-    MovementConfiguration _configuration = new MovementConfiguration(PLAYER_MOVEMENT_SPEED, PLAYER_TURN_SPEED);
+    MovementConfiguration _configuration;
     private double _moveMagnitude = 0;
     private double _turnDeg = 0;
 
     private HashMap<String, PlayerAction> _keyToPlayerActionMapper = new HashMap<>();
     private String[] _actionKeys = new String[] { "w", "a", "s", "d", "space" };;
 
-    public PlayerMovementBrain() {
+    public PlayerMovementBrain(MovementConfiguration moveConfig) {
+        _configuration = moveConfig;
         _keyToPlayerActionMapper.put("w", PlayerAction.FORWARD);
         _keyToPlayerActionMapper.put("a", PlayerAction.LEFT);
         _keyToPlayerActionMapper.put("s", PlayerAction.BACKWARDS);
