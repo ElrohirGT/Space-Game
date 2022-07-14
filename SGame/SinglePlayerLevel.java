@@ -19,6 +19,6 @@ public class SinglePlayerLevel extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WORLD_WIDTH, WORLD_HEIGHT, 1);
         addObject(playerShip, WORLD_WIDTH/2,WORLD_HEIGHT/2);
-        setPaintOrder(Ship.class, BasicBullet.class);
+        setPaintOrder(BasicBullet.class, Ship.class);
     }
 }

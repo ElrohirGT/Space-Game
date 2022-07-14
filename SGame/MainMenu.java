@@ -15,7 +15,7 @@ public class MainMenu extends UIWorld
     private final float PLAYER_MOVEMENT_SPEED = 5;
     private final float PLAYER_TURN_SPEED = 5;
     
-    private final float BULLET_MOVEMENT_SPEED = 5;
+    private final float BULLET_MOVEMENT_SPEED = 8;
     private final float BULLET_TURN_SPEED = 5;
     private final int BULLET_DAMAGE = 1;
     

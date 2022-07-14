@@ -13,7 +13,7 @@ public class BasicBullet extends Actor
     public BasicBullet(BulletConfiguration config)
     {
         _config = config;
-        HelpMethods.scaleToWidth(this, 20);
+        HelpMethods.scaleToWidth(getImage(), 20);
     }
 
     /**

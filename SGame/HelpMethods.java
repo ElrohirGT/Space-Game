@@ -7,18 +7,17 @@ import greenfoot.*;
  */
 public class HelpMethods  
 {
-    public static void scaleToWidth(Actor actor, int width)
+    public static void scaleToWidth(GreenfootImage image, int width)
     {
-        scaleTo(actor, width, true);
+        scaleTo(image, width, true);
     }
-    public static void scaleToHeight(Actor actor, int height)
+    public static void scaleToHeight(GreenfootImage image, int height)
     {
-        scaleTo(actor, height, false);
+        scaleTo(image, height, false);
     }
     
-    private static void scaleTo(Actor actor, int target, boolean targetIsWidth)
+    private static void scaleTo(GreenfootImage image, int target, boolean targetIsWidth)
     {
-        var image = actor.getImage();
         if (targetIsWidth)
         {
             double ratio = (double)image.getHeight() / image.getWidth();
@@ -29,6 +28,5 @@ public class HelpMethods
             double ratio = (double)image.getWidth() / image.getHeight();
             image.scale((int)(target*ratio), target);
         }
-        actor.setImage(image);
     }
 }
