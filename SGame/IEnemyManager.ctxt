@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=IEnemyManager
+comment0.text=\n\ Write\ a\ description\ of\ class\ IEnemyManager\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=target
+comment1.target=void\ removeEnemy(greenfoot.Actor)
+numComments=2

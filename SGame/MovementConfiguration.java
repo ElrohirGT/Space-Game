@@ -1,5 +1,11 @@
 public class MovementConfiguration {
     
+    public MovementConfiguration(MovementConfiguration baseInstance)
+    {
+        _movementSpeed = baseInstance.getMovementSpeed();
+        _turnSpeed = baseInstance.getTurnSpeed();
+    }
+
     public MovementConfiguration(float movementSpeed, float turnSpeed)
     {
         _movementSpeed = movementSpeed;

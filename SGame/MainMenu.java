@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Hashtable;
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import packages.ui.*;
 
@@ -20,6 +23,8 @@ public class MainMenu extends UIWorld
     private final int BULLET_DAMAGE = 1;
     
     private final int GUN_RELOAD_MS = 500;
+
+    private final int WAVE_COOLDOWN = 1000;
     
     /**
      * Constructor for objects of class MainMenu.
@@ -40,8 +45,16 @@ public class MainMenu extends UIWorld
         MovementConfiguration mShipConfig = new MovementConfiguration(PLAYER_MOVEMENT_SPEED, PLAYER_TURN_SPEED);
         ShipConfiguration sConfig = new ShipConfiguration(mShipConfig, defaultGun);
         Ship ship = new Ship(sConfig);
+
+        ArrayList<Wave> waves = new ArrayList<>();
+        var wave1Enemies = new Hashtable<IEnemyFactory, Integer>();
+        IEnemyFactory asteroidFactory = new AsteroidFactory(new AsteroidMovementBrain(new MovementConfiguration(PLAYER_MOVEMENT_SPEED / 2, PLAYER_TURN_SPEED)));
+        wave1Enemies.put(asteroidFactory, 2);
+        waves.add(new Wave(wave1Enemies));
+        EnemySpawnerConfiguration spawnerConfig = new EnemySpawnerConfiguration(WAVE_COOLDOWN, waves);
+        EnemySpawner spawner = new EnemySpawner(spawnerConfig);
         
-        World singlePlayerWorld = new SinglePlayerLevel(ship);
+        World singlePlayerWorld = new SinglePlayerLevel(ship, new ISpawner[] { spawner });
 
         setBackground("space1.jpg");
         add(new Text("Alien Survival", 65, Color.RED), 1f/1.85, 1f/5);

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=EnemySpawner
+comment1.params=config
+comment1.target=EnemySpawner(EnemySpawnerConfiguration)
+comment2.params=
+comment2.target=boolean\ shouldSpawn()
+comment3.params=world
+comment3.target=void\ spawn(greenfoot.World)
+comment4.params=target
+comment4.target=void\ removeEnemy(greenfoot.Actor)
+numComments=5

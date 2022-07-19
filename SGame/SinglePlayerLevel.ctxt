@@ -1,7 +1,9 @@
 #BlueJ class context
 comment0.target=SinglePlayerLevel
 comment0.text=\n\ Write\ a\ description\ of\ class\ SinglePlayerLevel\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=playerShip
-comment1.target=SinglePlayerLevel(Ship)
+comment1.params=playerShip\ spawners
+comment1.target=SinglePlayerLevel(Ship,\ ISpawner[])
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SinglePlayerLevel.\n\ \n
-numComments=2
+comment2.params=
+comment2.target=void\ act()
+numComments=3
