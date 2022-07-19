@@ -35,7 +35,17 @@ public class MainMenu extends UIWorld
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WORLD_WIDTH, WORLD_HEIGHT, 1);
 
-        
+        World singlePlayerWorld = getSinglePlayerWorld();
+
+        setBackground("space1.jpg");
+        add(new Text("Alien Survival", 65, Color.RED), 1f/1.85, 1f/5);
+        add(new Button("1 Jugador", singlePlayerWorld), 1f/2, 2f/5);
+        add(new Button("2 Jugadores"), 1f/2, 1f/2);
+        add(new Button("Tutorial"), 1f/2, 3f/5);
+    }
+
+    public World getSinglePlayerWorld()
+    {
         MovementConfiguration mBulletConfig = new MovementConfiguration(BULLET_MOVEMENT_SPEED, BULLET_TURN_SPEED);
         BulletConfiguration bulletConfig = new BulletConfiguration(mBulletConfig, BULLET_DAMAGE);
         var bulletFactory = new BasicBulletFactory(bulletConfig);
@@ -48,18 +58,18 @@ public class MainMenu extends UIWorld
 
         ArrayList<Wave> waves = new ArrayList<>();
         var wave1Enemies = new Hashtable<IEnemyFactory, Integer>();
-        IEnemyFactory asteroidFactory = new AsteroidFactory(new AsteroidMovementBrain(new MovementConfiguration(PLAYER_MOVEMENT_SPEED / 2, PLAYER_TURN_SPEED)));
-        wave1Enemies.put(asteroidFactory, 2);
+
+        MiniAsteroidFactory miniasteroidFactory = new MiniAsteroidFactory(
+            new AsteroidMovementBrain(new MovementConfiguration(PLAYER_MOVEMENT_SPEED * 3 / 4, 0)),
+            new AsteroidCollisionBrain(false));
+        IEnemyFactory asteroidFactory = new AsteroidFactory(
+            new AsteroidMovementBrain(new MovementConfiguration(PLAYER_MOVEMENT_SPEED / 2, 0)),
+            new AsteroidCollisionBrain(true), miniasteroidFactory);
+        wave1Enemies.put(asteroidFactory, 10);
         waves.add(new Wave(wave1Enemies));
         EnemySpawnerConfiguration spawnerConfig = new EnemySpawnerConfiguration(WAVE_COOLDOWN, waves);
         EnemySpawner spawner = new EnemySpawner(spawnerConfig);
         
-        World singlePlayerWorld = new SinglePlayerLevel(ship, new ISpawner[] { spawner });
-
-        setBackground("space1.jpg");
-        add(new Text("Alien Survival", 65, Color.RED), 1f/1.85, 1f/5);
-        add(new Button("1 Jugador", singlePlayerWorld), 1f/2, 2f/5);
-        add(new Button("2 Jugadores"), 1f/2, 1f/2);
-        add(new Button("Tutorial"), 1f/2, 3f/5);
+        return new SinglePlayerLevel(ship, new ISpawner[] { spawner });
     }
 }

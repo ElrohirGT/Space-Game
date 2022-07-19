@@ -2,8 +2,12 @@
 comment0.target=AsteroidMovementBrain
 comment1.params=configuration
 comment1.target=AsteroidMovementBrain(MovementConfiguration)
-comment2.params=
-comment2.target=boolean\ shouldMove()
-comment3.params=body
-comment3.target=void\ move(greenfoot.Actor)
-numComments=4
+comment2.params=baseInstance
+comment2.target=AsteroidMovementBrain(AsteroidMovementBrain)
+comment3.params=
+comment3.target=MovementConfiguration\ getConfiguration()
+comment4.params=
+comment4.target=boolean\ shouldMove()
+comment5.params=body
+comment5.target=void\ move(greenfoot.Actor)
+numComments=6

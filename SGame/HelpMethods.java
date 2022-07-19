@@ -7,6 +7,14 @@ import greenfoot.*;
  */
 public class HelpMethods  
 {
+    public static void setRandomRotation(Enemy accordingTo, Enemy target, int range)
+    {
+        int delta = Greenfoot.getRandomNumber(range) - 90;
+        int baseRotation = accordingTo.getRotation();
+
+        target.setRotation(baseRotation + delta);
+    }
+
     public static void scaleToWidth(GreenfootImage image, int width)
     {
         scaleTo(image, width, true);

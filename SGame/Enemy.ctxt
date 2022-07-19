@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Enemy
+comment0.text=\n\ Write\ a\ description\ of\ class\ Enemy\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=movementBrain\ collisionBrain
+comment1.target=Enemy(IMovementBrain,\ ICollisionBrain)
+comment2.params=manager
+comment2.target=void\ setEnemyManager(IEnemyManager)
+comment3.params=
+comment3.target=boolean\ isTouchingBullet()
+comment4.params=
+comment4.target=void\ diesFromBullet()
+comment5.params=
+comment5.target=void\ diesFromAge()
+comment6.params=
+comment6.target=void\ diesFromPlayer()
+comment7.params=
+comment7.target=void\ dies()
+comment8.params=
+comment8.target=void\ act()
+comment8.text=\n\ Act\ -\ do\ whatever\ the\ Asteroid\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=9

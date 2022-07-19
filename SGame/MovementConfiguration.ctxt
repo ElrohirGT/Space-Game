@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=MovementConfiguration
-comment1.params=movementSpeed\ turnSpeed
-comment1.target=MovementConfiguration(float,\ float)
-comment2.params=
-comment2.target=float\ getMovementSpeed()
-comment3.params=newSpeed
-comment3.target=void\ setMovementSpeed(float)
-comment4.params=
-comment4.target=float\ getTurnSpeed()
-comment5.params=newSpeed
-comment5.target=void\ setTurnSpeed(float)
-numComments=6
+comment1.params=baseInstance
+comment1.target=MovementConfiguration(MovementConfiguration)
+comment2.params=movementSpeed\ turnSpeed
+comment2.target=MovementConfiguration(float,\ float)
+comment3.params=
+comment3.target=float\ getMovementSpeed()
+comment4.params=newSpeed
+comment4.target=void\ setMovementSpeed(float)
+comment5.params=
+comment5.target=float\ getTurnSpeed()
+comment6.params=newSpeed
+comment6.target=void\ setTurnSpeed(float)
+numComments=7

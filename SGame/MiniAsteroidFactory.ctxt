@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=MiniAsteroidFactory
+comment0.text=\n\ Write\ a\ description\ of\ class\ MiniAsteroidFactory\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=baseMovementBrain\ baseCollisionBrain
+comment1.target=MiniAsteroidFactory(AsteroidMovementBrain,\ AsteroidCollisionBrain)
+comment2.params=
+comment2.target=Enemy\ getInstance()
+numComments=3

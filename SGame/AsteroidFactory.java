@@ -8,16 +8,20 @@ import greenfoot.*;
  */
 public class AsteroidFactory implements IEnemyFactory
 {
-    AsteroidMovementBrain _baseInstance;
+    AsteroidMovementBrain _baseMovementBrain;
+    AsteroidCollisionBrain _baseCollisionBrain;
+    MiniAsteroidFactory _factory;
 
-    public AsteroidFactory(AsteroidMovementBrain baseInstance)
+    public AsteroidFactory(AsteroidMovementBrain baseMovementBrain, AsteroidCollisionBrain baseCollisionBrain, MiniAsteroidFactory factory)
     {
-        _baseInstance = baseInstance;
+        _baseMovementBrain = baseMovementBrain;
+        _baseCollisionBrain = baseCollisionBrain;
+        _factory = factory;
     }
 
     @Override
-    public Actor getInstance() {
-        return new Asteroid(new AsteroidMovementBrain(_baseInstance));
+    public Enemy getInstance() {
+        return new Asteroid(new AsteroidMovementBrain(_baseMovementBrain), new AsteroidCollisionBrain(_baseCollisionBrain), _factory);
     }
 
 }

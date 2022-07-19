@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=HelpMethods
 comment0.text=\n\ Write\ a\ description\ of\ class\ HelpMethods\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=image\ width
-comment1.target=void\ scaleToWidth(greenfoot.GreenfootImage,\ int)
-comment2.params=image\ height
-comment2.target=void\ scaleToHeight(greenfoot.GreenfootImage,\ int)
-comment3.params=image\ target\ targetIsWidth
-comment3.target=void\ scaleTo(greenfoot.GreenfootImage,\ int,\ boolean)
-numComments=4
+comment1.params=accordingTo\ target\ range
+comment1.target=void\ setRandomRotation(Enemy,\ Enemy,\ int)
+comment2.params=image\ width
+comment2.target=void\ scaleToWidth(greenfoot.GreenfootImage,\ int)
+comment3.params=image\ height
+comment3.target=void\ scaleToHeight(greenfoot.GreenfootImage,\ int)
+comment4.params=image\ target\ targetIsWidth
+comment4.target=void\ scaleTo(greenfoot.GreenfootImage,\ int,\ boolean)
+numComments=5

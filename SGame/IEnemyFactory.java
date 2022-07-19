@@ -8,5 +8,5 @@ import greenfoot.*;
  */
 public interface IEnemyFactory
 {
-    public Actor getInstance();
+    public Enemy getInstance();
 }

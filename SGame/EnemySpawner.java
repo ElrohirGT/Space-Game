@@ -6,11 +6,10 @@ import greenfoot.*;
 
 public class EnemySpawner implements ISpawner, IEnemyManager
 {
-    private final int MS_COOLDOWN = 500;
     private int _currentWaveIndex = 0;
     private EnemySpawnerConfiguration _configuration;
     private SimpleTimer _internalTimer = new SimpleTimer();
-    private ArrayList<Actor> _currentWaveEnemies = new ArrayList<>();
+    private ArrayList<Enemy> _currentWaveEnemies = new ArrayList<>();
 
     public EnemySpawner(EnemySpawnerConfiguration config)
     {
@@ -20,7 +19,8 @@ public class EnemySpawner implements ISpawner, IEnemyManager
     @Override
     public boolean shouldSpawn() {
         boolean timerDone = _internalTimer.millisElapsed() > _configuration.getMSCooldown();
-        return _currentWaveEnemies.isEmpty() && timerDone;
+        boolean nextWaveAvailable = _configuration.getWaves().size() > _currentWaveIndex;
+        return _currentWaveEnemies.isEmpty() && timerDone && nextWaveAvailable;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class EnemySpawner implements ISpawner, IEnemyManager
                 int direction = Greenfoot.getRandomNumber(4);
                 int x = 0;
                 int y = 0;
-                int rotation = Greenfoot.getRandomNumber(179) + 1; //Range between 1-179, this way there are no 0 and 180 angles.
+                int rotation = getRandomRotation(direction); //Range between 1-179, this way there are no 0 and 180 angles.
 
                 switch (direction) {
                     case 0:// NORTH
@@ -45,23 +45,20 @@ public class EnemySpawner implements ISpawner, IEnemyManager
                     case 1:// SOUTH
                         y = SinglePlayerLevel.WORLD_HEIGHT;
                         x += Greenfoot.getRandomNumber(WORLD_WIDTH);
-                        rotation = -rotation;
                         break;
                     case 2:// EAST
                         x = SinglePlayerLevel.WORLD_WIDTH;
                         y += Greenfoot.getRandomNumber(WORLD_HEIGHT);
-                        rotation += 90;
                         break;
                     case 3:// WEST
                         y += Greenfoot.getRandomNumber(WORLD_HEIGHT);
-                        rotation -= 90;
                         break;
                     default:
                         break;
                 }
 
-                Actor newEnemy = factory.getInstance();
-                _currentWaveEnemies.add(newEnemy);
+                Enemy newEnemy = factory.getInstance();
+                addEnemy(newEnemy);
                 newEnemy.setRotation(rotation);
                 world.addObject(newEnemy, x, y);
             }
@@ -69,9 +66,40 @@ public class EnemySpawner implements ISpawner, IEnemyManager
         _currentWaveIndex++;
     }
 
+    /**
+     * Get's a random rotation for an object in a specified direction.
+     * @param direction An int, 0 NORTH, 1 SOUTH, 2 EAST, 3 WEST
+     * @return a random rotation in greenfoot units.
+     */
+    public static int getRandomRotation(int direction)
+    {
+        int rotation = Greenfoot.getRandomNumber(179) + 1; //Range between 1-179, this way there are no 0 and 180 angles.
+
+        switch (direction) {
+            case 1:// SOUTH
+                rotation = -rotation;
+                break;
+            case 2:// EAST
+                rotation += 90;
+                break;
+            case 3:// WEST
+                rotation -= 90;
+                break;
+            default:
+                break;
+        }
+        return rotation;
+    }
+
+    public void addEnemy(Enemy enemy)
+    {
+        _currentWaveEnemies.add(enemy);
+        enemy.setEnemyManager(this);
+    }
+
     @Override
-    public void removeEnemy(Actor target) {
-        _currentWaveEnemies.remove(target);
+    public void removeEnemy(Enemy enemy) {
+        _currentWaveEnemies.remove(enemy);
 
         if (_currentWaveEnemies.isEmpty()) {
             _internalTimer.mark();

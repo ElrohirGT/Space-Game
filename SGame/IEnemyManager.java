@@ -8,5 +8,6 @@ import greenfoot.*;
  */
 public interface IEnemyManager  
 {
-    public void removeEnemy(Actor target);
+    public void removeEnemy(Enemy enemy);
+    public void addEnemy(Enemy enemy);
 }

@@ -10,9 +10,12 @@ public class Ship extends Actor
 {
     private final int ROCKET_WIDTH = 64;
 
+    private int life = 3;
+
     private ShipConfiguration _configuration;
     private IMovementBrain _movementBrain;
     private IGunBrain _gunBrain;
+    private ICollisionBrain _collisionBrain;
 
     private GreenfootImage _thrustRocketImage;
     private GreenfootImage _stillRocketImage;
@@ -21,6 +24,7 @@ public class Ship extends Actor
     {
         _configuration = configuration;
         _movementBrain = new PlayerMovementBrain(configuration.getMovementConfiguration());
+        _collisionBrain = new ShipCollisionBrain();
         _gunBrain = configuration.getShipGun();
         turn(-90);//This sets the ship facing up
 
@@ -28,6 +32,27 @@ public class Ship extends Actor
         HelpMethods.scaleToWidth(_thrustRocketImage, ROCKET_WIDTH);
         _stillRocketImage = new GreenfootImage("rocketStill.png");
         HelpMethods.scaleToWidth(_stillRocketImage, ROCKET_WIDTH);
+    }
+
+    public boolean enemyColliding()
+    {
+        return isTouching(Enemy.class);
+    }
+    public Enemy getEnemyColliding()
+    {
+        return (Enemy)getOneIntersectingObject(Enemy.class);
+    }
+
+    public void looseLife()
+    {
+        if (--life <= 0) {
+            endGame();
+        }
+    }
+
+    private void endGame()
+    {
+        Greenfoot.setWorld(new EndGame());
     }
     
     /**
@@ -48,6 +73,11 @@ public class Ship extends Actor
         if (_gunBrain.shouldFire())
         {
             _gunBrain.fire(this, getRotation());
+        }
+
+        if (_collisionBrain.isColliding(this))
+        {
+            _collisionBrain.actOnCollision(this);
         }
     }
 
