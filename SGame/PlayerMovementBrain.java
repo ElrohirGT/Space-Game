@@ -17,6 +17,12 @@ public class PlayerMovementBrain implements IMovementBrain {
         _keyToPlayerActionMapper.put("d", PlayerAction.RIGHT);
         _keyToPlayerActionMapper.put("space", PlayerAction.FIRE);
     }
+    
+    @Override
+    public int getMovementSpeed()
+    {
+        return Math.round(_configuration.getMovementSpeed());
+    }
 
     @Override
     public boolean shouldMove() {

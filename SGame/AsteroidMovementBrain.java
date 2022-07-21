@@ -28,5 +28,10 @@ public class AsteroidMovementBrain implements IMovementBrain
     public void move(Actor body) {
         body.move((int)_configuration.getMovementSpeed());
     }
+
+    @Override
+    public int getMovementSpeed() {
+        return Math.round(_configuration.getMovementSpeed());
+    }
     
 }

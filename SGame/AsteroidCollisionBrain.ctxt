@@ -11,4 +11,6 @@ comment4.params=body
 comment4.target=boolean\ isColliding(Enemy)
 comment5.params=body
 comment5.target=void\ actOnCollision(Enemy)
-numComments=6
+comment6.params=value\ min\ max
+comment6.target=int\ clamp(int,\ int,\ int)
+numComments=7

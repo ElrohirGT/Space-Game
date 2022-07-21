@@ -23,6 +23,11 @@ public class Enemy extends Actor
         _manager = manager;
     }
 
+    public int getMovementSpeed()
+    {
+        return _movementBrain.getMovementSpeed();
+    }
+
     public boolean isTouchingBullet()
     {
         return isTouching(BasicBullet.class);
