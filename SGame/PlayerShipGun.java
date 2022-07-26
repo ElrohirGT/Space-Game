@@ -23,7 +23,6 @@ public class PlayerShipGun implements IGunBrain
 
     @Override
     public void fire(Actor owner, int rotation) {
-        // TODO with a little bit of math the bullet could come from the tip but I don't want to to that right now.
         int height = owner.getImage().getHeight();
         int ownerRotation = 360 - owner.getRotation(); // Greenfoot angles are weird
         int x = owner.getX() + (int)(height * Math.cos(Math.toRadians(ownerRotation)));

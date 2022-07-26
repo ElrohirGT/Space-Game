@@ -8,13 +8,19 @@ public class ShipConfiguration
 {
     private MovementConfiguration _moveConfig;
     private IGunBrain _shipGun;
+    private int _ultimateCount;
     
-    public ShipConfiguration(MovementConfiguration moveConfig, IGunBrain shipGun)
+    public ShipConfiguration(MovementConfiguration moveConfig, IGunBrain shipGun, int ultimateCount)
     {
         _moveConfig = moveConfig;
         _shipGun = shipGun;
+        _ultimateCount = ultimateCount;
     }
     
+    public int getUltimateCount() {
+        return _ultimateCount;
+    }
+
     public IGunBrain getShipGun()
     {
         return _shipGun;

@@ -11,11 +11,13 @@ public class Enemy extends Actor
     private IMovementBrain _movementBrain;
     private ICollisionBrain<Enemy> _collisionBrain;
     private IEnemyManager _manager;
+    private ISpawner _powerUpSpawner;
 
-    public Enemy(IMovementBrain movementBrain, ICollisionBrain<Enemy> collisionBrain)
+    public Enemy(IMovementBrain movementBrain, ICollisionBrain<Enemy> collisionBrain, ISpawner powerUpSpawner)
     {
         _movementBrain = movementBrain;
         _collisionBrain = collisionBrain;
+        _powerUpSpawner = powerUpSpawner;
     }
 
     public void setEnemyManager(IEnemyManager manager)
@@ -36,6 +38,9 @@ public class Enemy extends Actor
     public void diesFromBullet()
     {
         removeTouching(BasicBullet.class);
+        if (_powerUpSpawner.shouldSpawn()) {
+            _powerUpSpawner.spawn(getWorld(), getX(), getY());
+        }
         dies();
     }
 

@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import packages.ui.Text;
 
 /**
  * Write a description of class Ship here.
@@ -44,6 +45,19 @@ public class Ship extends Actor
             HelpMethods.scaleToWidth(stillImage, ROCKET_WIDTH);
             _stillRocketImages[i] = stillImage;
         }
+    }
+
+    public boolean powerUpColliding() {
+        return isTouching(PowerUp.class);
+    }
+    public Actor getCollidingPowerUp() {
+        return getOneIntersectingObject(PowerUp.class);
+    }
+
+    public void gainUltimatePoint() {
+
+        _ultimateCount = Math.min(++_ultimateCount, _configuration.getUltimateCount());
+        getWorld().getObjects(Text.class).get(0).setContent(_ultimateCount + "/" + _configuration.getUltimateCount());
     }
 
     public boolean enemyColliding()

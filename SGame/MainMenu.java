@@ -53,21 +53,17 @@ public class MainMenu extends UIWorld
         IGunBrain defaultGun = new PlayerShipGun(gunConfig);
         
         MovementConfiguration mShipConfig = new MovementConfiguration(PLAYER_MOVEMENT_SPEED, PLAYER_TURN_SPEED);
-        ShipConfiguration sConfig = new ShipConfiguration(mShipConfig, defaultGun);
+        ShipConfiguration sConfig = new ShipConfiguration(mShipConfig, defaultGun, 5);
         Ship ship = new Ship(sConfig);
-
-        ArrayList<Wave> waves = new ArrayList<>();
-        var wave1Enemies = new Hashtable<IEnemyFactory, Integer>();
 
         MiniAsteroidFactory miniasteroidFactory = new MiniAsteroidFactory(
             new AsteroidMovementBrain(new MovementConfiguration(PLAYER_MOVEMENT_SPEED * 3 / 4, 0)),
             new AsteroidCollisionBrain(false));
         IEnemyFactory asteroidFactory = new AsteroidFactory(
             new AsteroidMovementBrain(new MovementConfiguration(PLAYER_MOVEMENT_SPEED / 2, 0)),
-            new AsteroidCollisionBrain(true), miniasteroidFactory);
-        wave1Enemies.put(asteroidFactory, 10);
-        waves.add(new Wave(wave1Enemies));
-        EnemySpawnerConfiguration spawnerConfig = new EnemySpawnerConfiguration(WAVE_COOLDOWN, waves);
+            new AsteroidCollisionBrain(true), miniasteroidFactory, new PowerUpSpawner());
+
+        EnemySpawnerConfiguration spawnerConfig = new EnemySpawnerConfiguration(WAVE_COOLDOWN, new WaveGenerator(asteroidFactory));
         EnemySpawner spawner = new EnemySpawner(spawnerConfig);
         
         return new SinglePlayerLevel(ship, new ISpawner[] { spawner });

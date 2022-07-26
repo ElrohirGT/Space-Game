@@ -10,7 +10,17 @@ public class MiniAsteroid extends Enemy
 {
     public MiniAsteroid(IMovementBrain movementBrain, ICollisionBrain<Enemy> collisionBrain)
     {
-        super(movementBrain, collisionBrain);
+        super(movementBrain, collisionBrain, new ISpawner() {
+            @Override
+            public boolean shouldSpawn() {
+                return false;
+            }
+
+            @Override
+            public void spawn(World w){}
+
+            @Override
+            public void spawn(World w, int x, int y){}});
 
         GreenfootImage image = getImage();
         HelpMethods.scaleToWidth(image, 32);

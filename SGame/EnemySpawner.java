@@ -57,6 +57,8 @@ public class EnemySpawner implements ISpawner, IEnemyManager
                         break;
                 }
 
+                spawn(world, x, y);
+
                 Enemy newEnemy = factory.getInstance();
                 addEnemy(newEnemy);
                 newEnemy.setRotation(rotation);
@@ -104,6 +106,11 @@ public class EnemySpawner implements ISpawner, IEnemyManager
         if (_currentWaveEnemies.isEmpty()) {
             _internalTimer.mark();
         }
+    }
+
+    @Override
+    public void spawn(World world, int x, int y) {
+
     }
 
 }

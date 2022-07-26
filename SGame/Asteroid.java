@@ -12,9 +12,9 @@ public class Asteroid extends Enemy
     private IEnemyManager _manager;
     private MiniAsteroidFactory _factory;
 
-    public Asteroid(IMovementBrain movementBrain, ICollisionBrain<Enemy> collisionBrain, MiniAsteroidFactory factory)
+    public Asteroid(IMovementBrain movementBrain, ICollisionBrain<Enemy> collisionBrain, MiniAsteroidFactory factory, ISpawner powerUpSpawner)
     {
-        super(movementBrain, collisionBrain);
+        super(movementBrain, collisionBrain, powerUpSpawner);
         _factory = factory;
     }
 
