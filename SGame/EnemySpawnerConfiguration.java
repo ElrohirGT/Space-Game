@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 /**
  * Write a description of class EnemySpawnerConfiguration here.
@@ -8,28 +7,23 @@ import java.util.ArrayList;
  */
 public class EnemySpawnerConfiguration  
 {
-    public EnemySpawnerConfiguration(int msCooldown, ArrayList<Wave> waves)
+    public EnemySpawnerConfiguration(int msCooldown, IWaveGenerator waveGenerator)
     {
         _msCooldown = msCooldown;
-        _waves = waves;
+        _waveGenerator = waveGenerator;
     }
 
     private int _msCooldown;
     public int getMSCooldown() {
         return _msCooldown;
     }
-    public void setMSCooldown(int msCooldown, ArrayList<Wave> waves)
+    public void setMSCooldown(int msCooldown)
     {
         _msCooldown = msCooldown;
-        _waves = waves;
     }
 
-    private ArrayList<Wave> _waves;
-    public ArrayList<Wave> getWaves() {
-        return _waves;
-    }
-    public void setWaves(ArrayList<Wave> waves)
-    {
-        _waves = waves;
+    private IWaveGenerator _waveGenerator;
+    public Wave getWave(int index) {
+        return _waveGenerator.getWave(index);
     }
 }

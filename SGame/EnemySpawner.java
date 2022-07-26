@@ -6,7 +6,7 @@ import greenfoot.*;
 
 public class EnemySpawner implements ISpawner, IEnemyManager
 {
-    private int _currentWaveIndex = 0;
+    private int _currentWaveIndex = 1;
     private EnemySpawnerConfiguration _configuration;
     private SimpleTimer _internalTimer = new SimpleTimer();
     private ArrayList<Enemy> _currentWaveEnemies = new ArrayList<>();
@@ -19,13 +19,13 @@ public class EnemySpawner implements ISpawner, IEnemyManager
     @Override
     public boolean shouldSpawn() {
         boolean timerDone = _internalTimer.millisElapsed() > _configuration.getMSCooldown();
-        boolean nextWaveAvailable = _configuration.getWaves().size() > _currentWaveIndex;
-        return _currentWaveEnemies.isEmpty() && timerDone && nextWaveAvailable;
+        // boolean nextWaveAvailable = _configuration.getWaves().size() > _currentWaveIndex;
+        return _currentWaveEnemies.isEmpty() && timerDone;
     }
 
     @Override
     public void spawn(World world) {
-        Hashtable<IEnemyFactory, Integer> enemies = _configuration.getWaves().get(_currentWaveIndex).getEnemies();
+        Hashtable<IEnemyFactory, Integer> enemies = _configuration.getWave(_currentWaveIndex).getEnemies();
         Set<IEnemyFactory> keys = enemies.keySet();
         final int WORLD_WIDTH = world.getWidth();
         final int WORLD_HEIGHT = world.getHeight();
