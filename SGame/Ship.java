@@ -13,7 +13,8 @@ public class Ship extends Actor
 
     private int _life = 3;
     private int _ultimateCount = 0;
-
+    
+    private IUltimateManager _ultimateManager;
     private ShipConfiguration _configuration;
     private IMovementBrain _movementBrain;
     private IGunBrain _gunBrain;
@@ -25,9 +26,10 @@ public class Ship extends Actor
     // private GreenfootImage _thrustRocketImage;
     // private GreenfootImage _stillRocketImage;
 
-    public Ship(ShipConfiguration configuration)
+    public Ship(ShipConfiguration configuration, IUltimateManager ultimateManager)
     {
         _configuration = configuration;
+        _ultimateManager = ultimateManager;
         _movementBrain = new PlayerMovementBrain(configuration.getMovementConfiguration());
         _collisionBrain = new ShipCollisionBrain();
         _gunBrain = configuration.getShipGun();
@@ -55,9 +57,12 @@ public class Ship extends Actor
     }
 
     public void gainUltimatePoint() {
+        _ultimateManager.incrementOrbCount();
+        updateUltimateCounter();
+    }
 
-        _ultimateCount = Math.min(++_ultimateCount, _configuration.getUltimateCount());
-        getWorld().getObjects(Text.class).get(0).setContent(_ultimateCount + "/" + _configuration.getUltimateCount());
+    public void updateUltimateCounter() {
+        getWorld().getObjects(Text.class).get(0).setContent(_ultimateManager.getCurrentOrbCount() + "/" + _ultimateManager.getTotalOrbCount());
     }
 
     public boolean enemyColliding()
@@ -99,6 +104,10 @@ public class Ship extends Actor
         if (_gunBrain.shouldFire())
         {
             _gunBrain.fire(this, getRotation());
+        }
+
+        if (_ultimateManager.shouldFireUltimate()) {
+            _ultimateManager.fireUltimate(this);
         }
 
         if (_collisionBrain.isColliding(this))

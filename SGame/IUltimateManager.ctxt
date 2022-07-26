@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=IUltimateManager
+comment0.text=\n\ Write\ a\ description\ of\ class\ IUltimateManager\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=void\ incrementOrbCount()
+comment2.params=
+comment2.target=int\ getCurrentOrbCount()
+comment3.params=
+comment3.target=int\ getTotalOrbCount()
+comment4.params=
+comment4.target=boolean\ shouldFireUltimate()
+comment5.params=body
+comment5.target=void\ fireUltimate(Ship)
+numComments=6

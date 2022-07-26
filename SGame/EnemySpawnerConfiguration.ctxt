@@ -1,14 +1,12 @@
 #BlueJ class context
 comment0.target=EnemySpawnerConfiguration
 comment0.text=\n\ Write\ a\ description\ of\ class\ EnemySpawnerConfiguration\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=msCooldown\ waves
-comment1.target=EnemySpawnerConfiguration(int,\ java.util.ArrayList)
+comment1.params=msCooldown\ waveGenerator
+comment1.target=EnemySpawnerConfiguration(int,\ IWaveGenerator)
 comment2.params=
 comment2.target=int\ getMSCooldown()
-comment3.params=msCooldown\ waves
-comment3.target=void\ setMSCooldown(int,\ java.util.ArrayList)
-comment4.params=
-comment4.target=java.util.ArrayList\ getWaves()
-comment5.params=waves
-comment5.target=void\ setWaves(java.util.ArrayList)
-numComments=6
+comment3.params=msCooldown
+comment3.target=void\ setMSCooldown(int)
+comment4.params=index
+comment4.target=Wave\ getWave(int)
+numComments=5

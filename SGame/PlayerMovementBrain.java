@@ -23,6 +23,10 @@ public class PlayerMovementBrain implements IMovementBrain {
     {
         return Math.round(_configuration.getMovementSpeed());
     }
+    @Override
+    public void setMovementSpeed(int newMovementSpeed) {
+        _configuration.setMovementSpeed(newMovementSpeed);
+    }
 
     @Override
     public boolean shouldMove() {

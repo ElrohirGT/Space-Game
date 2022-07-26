@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends Actor
+public abstract class Enemy extends Actor
 {
     private IMovementBrain _movementBrain;
     private ICollisionBrain<Enemy> _collisionBrain;
@@ -20,6 +20,8 @@ public class Enemy extends Actor
         _powerUpSpawner = powerUpSpawner;
     }
 
+    public abstract int getPointsWorth();
+
     public void setEnemyManager(IEnemyManager manager)
     {
         _manager = manager;
@@ -28,6 +30,9 @@ public class Enemy extends Actor
     public int getMovementSpeed()
     {
         return _movementBrain.getMovementSpeed();
+    }
+    public void setMovementSpeed(int newMovementSpeed) {
+        _movementBrain.setMovementSpeed(newMovementSpeed);
     }
 
     public boolean isTouchingBullet()
@@ -56,8 +61,8 @@ public class Enemy extends Actor
 
     private void dies()
     {
-        getWorld().removeObject(this);
         _manager.removeEnemy(this);
+        getWorld().removeObject(this);
     }
 
     /**

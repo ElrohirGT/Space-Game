@@ -33,5 +33,10 @@ public class AsteroidMovementBrain implements IMovementBrain
     public int getMovementSpeed() {
         return Math.round(_configuration.getMovementSpeed());
     }
+
+    @Override
+    public void setMovementSpeed(int newMovementSpeed) {
+        _configuration.setMovementSpeed(newMovementSpeed);
+    }
     
 }

@@ -4,4 +4,6 @@ comment1.params=
 comment1.target=boolean\ shouldSpawn()
 comment2.params=world
 comment2.target=void\ spawn(greenfoot.World)
-numComments=3
+comment3.params=world\ x\ y
+comment3.target=void\ spawn(greenfoot.World,\ int,\ int)
+numComments=4

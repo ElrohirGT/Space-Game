@@ -16,6 +16,22 @@ public class EnemySpawner implements ISpawner, IEnemyManager
         _configuration = config;
     }
 
+    public void scaleAll(double factor) {
+        for (Enemy enemy : _currentWaveEnemies) {
+            var image = enemy.getImage();
+            double width = image.getWidth();
+            HelpMethods.scaleToWidth(image, (int)Math.round(width * factor));
+            enemy.setImage(image);
+        }
+    }
+
+    public void scaleSpeedAll(double factor) {
+        for (Enemy enemy : _currentWaveEnemies) {
+            double speed = enemy.getMovementSpeed();
+            enemy.setMovementSpeed((int)Math.round(speed * factor));
+        }
+    }
+
     @Override
     public boolean shouldSpawn() {
         boolean timerDone = _internalTimer.millisElapsed() > _configuration.getMSCooldown();
@@ -101,6 +117,8 @@ public class EnemySpawner implements ISpawner, IEnemyManager
 
     @Override
     public void removeEnemy(Enemy enemy) {
+        int points = enemy.getPointsWorth();
+        ((SinglePlayerLevel)(enemy.getWorld())).addPoints(points);
         _currentWaveEnemies.remove(enemy);
 
         if (_currentWaveEnemies.isEmpty()) {

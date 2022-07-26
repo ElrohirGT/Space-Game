@@ -6,4 +6,6 @@ comment2.params=body
 comment2.target=void\ move(greenfoot.Actor)
 comment3.params=
 comment3.target=int\ getMovementSpeed()
-numComments=4
+comment4.params=newMovementSpeed
+comment4.target=void\ setMovementSpeed(int)
+numComments=5

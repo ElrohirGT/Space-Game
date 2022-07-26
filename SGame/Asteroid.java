@@ -50,4 +50,9 @@ public class Asteroid extends Enemy
         }
         return children;
     }
+
+    @Override
+    public int getPointsWorth() {
+        return 100;
+    }
 }
