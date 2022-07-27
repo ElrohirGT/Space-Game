@@ -38,8 +38,7 @@ public class MainMenu extends UIWorld {
         setBackground("space1.jpg");
         add(new Text("Alien Survival", 65, Color.RED), 1f / 1.85, 1f / 5);
         add(new Button("1 Jugador", singlePlayerWorld), 1f / 2, 2f / 5);
-        add(new Button("2 Jugadores"), 1f / 2, 1f / 2);
-        add(new Button("Tutorial"), 1f / 2, 3f / 5);
+        add(new Button("Tutorial", new TutorialWorld()), 1f / 2, 1f / 2);
     }
 
     public World getSinglePlayerWorld() {
@@ -63,7 +62,7 @@ public class MainMenu extends UIWorld {
                 new WaveGenerator(asteroidFactory));
         EnemySpawner spawner = new EnemySpawner(spawnerConfig);
 
-        Ship ship = new Ship(sConfig, new ShipUltimateManager(5, spawner));
+        Ship ship = new Ship(sConfig, new ShipUltimateManager(4, spawner));
         return new SinglePlayerLevel(ship, new ISpawner[] { spawner });
     }
 }

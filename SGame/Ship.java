@@ -22,6 +22,7 @@ public class Ship extends Actor
 
     private GreenfootImage[] _thrustRocketImages;
     private GreenfootImage[] _stillRocketImages;
+    private SimpleTimer _lifeTimer = new SimpleTimer();
 
     // private GreenfootImage _thrustRocketImage;
     // private GreenfootImage _stillRocketImage;
@@ -83,7 +84,7 @@ public class Ship extends Actor
 
     private void endGame()
     {
-        Greenfoot.setWorld(new EndGame());
+        Greenfoot.setWorld(new EndGame(_lifeTimer.millisElapsed()));
     }
     
     /**

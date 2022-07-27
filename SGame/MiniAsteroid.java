@@ -26,9 +26,4 @@ public class MiniAsteroid extends Enemy
         HelpMethods.scaleToWidth(image, 32);
         setImage(image);
     }
-
-    @Override
-    public int getPointsWorth() {
-        return 50;
-    }
 }

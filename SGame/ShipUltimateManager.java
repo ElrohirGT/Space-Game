@@ -22,7 +22,7 @@ public class ShipUltimateManager implements IUltimateManager
     public void fireUltimate(Ship body) {
         _ultimateIsActive = true;
         _globalSpawner.scaleAll(0.5);
-        _globalSpawner.scaleSpeedAll(0.5);
+        _globalSpawner.scaleSpeedAll(0.25);
         _ultimateTimer.mark();
         _orbCount = 0;
         body.updateUltimateCounter();
@@ -30,12 +30,12 @@ public class ShipUltimateManager implements IUltimateManager
 
     public void reverseUltimate() {
         _globalSpawner.scaleAll(2);
-        _globalSpawner.scaleSpeedAll(2);
+        _globalSpawner.scaleSpeedAll(4);
     }
 
     @Override
     public void incrementOrbCount() {
-        _orbCount++;
+        _orbCount = Math.min(++_orbCount, _totalOrbCount);
     }
 
     @Override
@@ -44,8 +44,8 @@ public class ShipUltimateManager implements IUltimateManager
         boolean wantsToFire = Greenfoot.isKeyDown("q");
 
         if (_ultimateTimer.millisElapsed() >= 20_000 && _ultimateIsActive) {
-            reverseUltimate();
             _ultimateIsActive = false;
+            reverseUltimate();
         }
         
         return canFire && wantsToFire && !_ultimateIsActive;

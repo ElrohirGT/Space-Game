@@ -20,8 +20,6 @@ public abstract class Enemy extends Actor
         _powerUpSpawner = powerUpSpawner;
     }
 
-    public abstract int getPointsWorth();
-
     public void setEnemyManager(IEnemyManager manager)
     {
         _manager = manager;

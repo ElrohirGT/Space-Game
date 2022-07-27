@@ -8,8 +8,13 @@ public class EnemySpawner implements ISpawner, IEnemyManager
 {
     private int _currentWaveIndex = 1;
     private EnemySpawnerConfiguration _configuration;
-    private SimpleTimer _internalTimer = new SimpleTimer();
+    private SimpleTimer _timerBetweenWaves = new SimpleTimer();
+    private SimpleTimer _waveTimer = new SimpleTimer();
     private ArrayList<Enemy> _currentWaveEnemies = new ArrayList<>();
+    private ArrayList<Enemy> _speedModifiedEnemies = new ArrayList<>();
+    private ArrayList<Enemy> _scaleModifiedEnemies = new ArrayList<>();
+    private boolean _scaleModified = false;
+    private boolean _speedModified = false;
 
     public EnemySpawner(EnemySpawnerConfiguration config)
     {
@@ -17,30 +22,59 @@ public class EnemySpawner implements ISpawner, IEnemyManager
     }
 
     public void scaleAll(double factor) {
-        for (Enemy enemy : _currentWaveEnemies) {
-            var image = enemy.getImage();
-            double width = image.getWidth();
-            HelpMethods.scaleToWidth(image, (int)Math.round(width * factor));
-            enemy.setImage(image);
+        if (_scaleModified) {
+            for (Enemy enemy : _scaleModifiedEnemies) {
+                var image = enemy.getImage();
+                double width = image.getWidth();
+                int newWidth = (int)Math.round(width * factor);
+                HelpMethods.scaleToWidth(image, newWidth);
+                enemy.setImage(image);
+            }
+            _scaleModifiedEnemies.clear();
         }
+        else {
+            for (Enemy enemy : _currentWaveEnemies) {
+                var image = enemy.getImage();
+                double width = image.getWidth();
+                int newWidth = (int)Math.round(width * factor);
+                HelpMethods.scaleToWidth(image, newWidth);
+                enemy.setImage(image);
+                _scaleModifiedEnemies.add(enemy);
+            }
+        }
+        _scaleModified = !_scaleModified;
     }
 
     public void scaleSpeedAll(double factor) {
-        for (Enemy enemy : _currentWaveEnemies) {
-            double speed = enemy.getMovementSpeed();
-            enemy.setMovementSpeed((int)Math.round(speed * factor));
+        if (_scaleModified) {
+            for (Enemy enemy : _speedModifiedEnemies) {
+                double speed = enemy.getMovementSpeed();
+                enemy.setMovementSpeed((int)Math.round(speed * factor));
+            }
+            
+            _speedModifiedEnemies.clear();
         }
+        else {
+            for (Enemy enemy : _currentWaveEnemies) {
+                double speed = enemy.getMovementSpeed();
+                enemy.setMovementSpeed((int)Math.round(speed * factor));
+                _speedModifiedEnemies.add(enemy);
+            }
+        }
+        _speedModified = !_speedModified;
     }
 
     @Override
     public boolean shouldSpawn() {
-        boolean timerDone = _internalTimer.millisElapsed() > _configuration.getMSCooldown();
+        boolean timeBetweenWaves = _timerBetweenWaves.millisElapsed() > _configuration.getMSCooldown();
+        boolean waveTimerIsDone = _waveTimer.millisElapsed() > 20_000;
         // boolean nextWaveAvailable = _configuration.getWaves().size() > _currentWaveIndex;
-        return _currentWaveEnemies.isEmpty() && timerDone;
+        return (_currentWaveEnemies.isEmpty() && timeBetweenWaves) || waveTimerIsDone;
     }
 
     @Override
     public void spawn(World world) {
+        _waveTimer.mark();
         Hashtable<IEnemyFactory, Integer> enemies = _configuration.getWave(_currentWaveIndex).getEnemies();
         Set<IEnemyFactory> keys = enemies.keySet();
         final int WORLD_WIDTH = world.getWidth();
@@ -117,12 +151,12 @@ public class EnemySpawner implements ISpawner, IEnemyManager
 
     @Override
     public void removeEnemy(Enemy enemy) {
-        int points = enemy.getPointsWorth();
-        ((SinglePlayerLevel)(enemy.getWorld())).addPoints(points);
         _currentWaveEnemies.remove(enemy);
+        _scaleModifiedEnemies.remove(enemy);
+        _speedModifiedEnemies.remove(enemy);
 
         if (_currentWaveEnemies.isEmpty()) {
-            _internalTimer.mark();
+            _timerBetweenWaves.mark();
         }
     }
 
