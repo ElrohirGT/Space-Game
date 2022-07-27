@@ -23,7 +23,7 @@ public class SinglePlayerLevel extends UIWorld
     {
         super(WORLD_WIDTH, WORLD_HEIGHT, 1);
         addObject(playerShip, WORLD_WIDTH/2,WORLD_HEIGHT/2);
-        add(new Text("0/5", Color.GREEN), 0.9, 0.9);
+        add(new Text("0/4", Color.GREEN), 0.9, 0.9);
         setPaintOrder(BasicBullet.class, Ship.class);
 
         _spawners = spawners;
