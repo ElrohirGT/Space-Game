@@ -4,7 +4,6 @@ import java.util.Hashtable;
 
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import packages.ui.*;
-import packages.audiocue.AudioCue;
 
 /**
  * The Main Menu of the game
