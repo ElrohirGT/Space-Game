@@ -32,6 +32,10 @@ public class SinglePlayerLevel extends UIWorld
     @Override
     public void act()
     {
+        if (!MainMenu.music.isPlaying()) {
+            MainMenu.music.play();
+        }
+
         for (ISpawner spawner : _spawners) {
             if (spawner.shouldSpawn()) {
                 spawner.spawn(this);

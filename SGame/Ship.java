@@ -24,13 +24,13 @@ public class Ship extends Actor
     private GreenfootImage[] _stillRocketImages;
     private SimpleTimer _lifeTimer = new SimpleTimer();
 
-    // private GreenfootImage _thrustRocketImage;
-    // private GreenfootImage _stillRocketImage;
+    GreenfootSound _fireSound = new GreenfootSound("fire_bullet.wav");
 
     public Ship(ShipConfiguration configuration, IUltimateManager ultimateManager)
     {
         _configuration = configuration;
         _ultimateManager = ultimateManager;
+        _fireSound.setVolume(70);
         _movementBrain = new PlayerMovementBrain(configuration.getMovementConfiguration());
         _collisionBrain = new ShipCollisionBrain();
         _gunBrain = configuration.getShipGun();
@@ -104,6 +104,7 @@ public class Ship extends Actor
         }
         if (_gunBrain.shouldFire())
         {
+            _fireSound.play();
             _gunBrain.fire(this, getRotation());
         }
 

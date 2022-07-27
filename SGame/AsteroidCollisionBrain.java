@@ -10,15 +10,17 @@ public class AsteroidCollisionBrain implements ICollisionBrain<Enemy>
 {
     boolean _justSpawned = true;
     AsteroidActions _action;
+    GreenfootSound _bounceSound = new GreenfootSound("bounce.wav");
     
     public AsteroidCollisionBrain(boolean startsCollidingWithBorder)
     {
         _justSpawned = startsCollidingWithBorder;
+        _bounceSound.setVolume(60);
     }
 
     public AsteroidCollisionBrain(AsteroidCollisionBrain base)
     {
-        _justSpawned = base.getJustSpawned();
+        this(base.getJustSpawned());
     }
 
     public boolean getJustSpawned()
@@ -61,6 +63,7 @@ public class AsteroidCollisionBrain implements ICollisionBrain<Enemy>
                 body.diesFromBullet();
                 break;
             case BOUNCE:
+                _bounceSound.play();
                 final int X = body.getX();
                 final int Y = body.getY();
                 final int ROTATION = 0 - body.getRotation();

@@ -46,7 +46,7 @@ public class EnemySpawner implements ISpawner, IEnemyManager
     }
 
     public void scaleSpeedAll(double factor) {
-        if (_scaleModified) {
+        if (_speedModified) {
             for (Enemy enemy : _speedModifiedEnemies) {
                 double speed = enemy.getMovementSpeed();
                 enemy.setMovementSpeed((int)Math.round(speed * factor));

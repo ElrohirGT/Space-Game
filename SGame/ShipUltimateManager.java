@@ -1,4 +1,4 @@
-import greenfoot.Greenfoot;
+import greenfoot.*;
 
 /**
  * Write a description of class ShipUltimateManager here.
@@ -14,12 +14,16 @@ public class ShipUltimateManager implements IUltimateManager
     private SimpleTimer _ultimateTimer = new SimpleTimer();
     boolean _ultimateIsActive = false;
 
+    GreenfootSound _ultimateOnSound = new GreenfootSound("ultimate_on.wav");
+    GreenfootSound _ultimateOffSound = new GreenfootSound("ultimate_off.wav");
+
     public ShipUltimateManager(int totalOrbCount, EnemySpawner globalSpawner) {
         _totalOrbCount = totalOrbCount;
         _globalSpawner = globalSpawner;
     }
 
     public void fireUltimate(Ship body) {
+        _ultimateOnSound.play();
         _ultimateIsActive = true;
         _globalSpawner.scaleAll(0.5);
         _globalSpawner.scaleSpeedAll(0.25);
@@ -29,6 +33,7 @@ public class ShipUltimateManager implements IUltimateManager
     }
 
     public void reverseUltimate() {
+        _ultimateOffSound.play();
         _globalSpawner.scaleAll(2);
         _globalSpawner.scaleSpeedAll(4);
     }

@@ -1,8 +1,10 @@
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import packages.ui.*;
+import packages.audiocue.AudioCue;
 
 /**
  * The Main Menu of the game
@@ -25,6 +27,8 @@ public class MainMenu extends UIWorld {
 
     private final int WAVE_COOLDOWN = 1000;
 
+    public static GreenfootSound music = new GreenfootSound("background.wav");
+
     /**
      * Constructor for objects of class MainMenu.
      * 
@@ -32,6 +36,7 @@ public class MainMenu extends UIWorld {
     public MainMenu() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WORLD_WIDTH, WORLD_HEIGHT, 1);
+        music.setVolume(30);
 
         World singlePlayerWorld = getSinglePlayerWorld();
 
@@ -39,6 +44,13 @@ public class MainMenu extends UIWorld {
         add(new Text("Alien Survival", 65, Color.RED), 1f / 1.85, 1f / 5);
         add(new Button("1 Jugador", singlePlayerWorld), 1f / 2, 2f / 5);
         add(new Button("Tutorial", new TutorialWorld()), 1f / 2, 1f / 2);
+    }
+
+    @Override
+    public void act() {
+        if (!music.isPlaying()) {
+            music.play();
+        }
     }
 
     public World getSinglePlayerWorld() {

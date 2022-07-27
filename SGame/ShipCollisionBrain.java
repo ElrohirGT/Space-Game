@@ -8,8 +8,12 @@ import greenfoot.*;
  */
 public class ShipCollisionBrain  implements ICollisionBrain<Ship>
 {
-
     private ShipCollisions _lastCollision;
+    GreenfootSound _pickedUpPowerUpSound = new GreenfootSound("powerup.wav");
+
+    public ShipCollisionBrain() {
+        _pickedUpPowerUpSound.setVolume(60);
+    }
 
     @Override
     public boolean isColliding(Ship body) {
@@ -39,6 +43,8 @@ public class ShipCollisionBrain  implements ICollisionBrain<Ship>
                 Actor power_up = body.getCollidingPowerUp();
                 body.gainUltimatePoint();
                 body.getWorld().removeObject(power_up);
+                _pickedUpPowerUpSound.play();
+                break;
             default:
                 break;
         }
